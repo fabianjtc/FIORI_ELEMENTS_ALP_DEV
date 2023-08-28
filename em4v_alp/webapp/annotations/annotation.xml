@@ -5,15 +5,15 @@
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-    </edmx:Reference>
     <edmx:Reference Uri="/sap/opu/odata/em4v/I_SVC_ALP_CDS/$metadata">
         <edmx:Include Namespace="xEM4VxI_SVC_ALP_CDS"/>
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
-                    <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType/IssueMonth">
+
+
+
+         <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType/IssueMonth">
                 <Annotation Term="Common.ValueList">
                     <Record Type="Common.ValueListType">
                         <PropertyValue Property="CollectionPath" String="documentSet"/>
@@ -29,7 +29,26 @@
                     </Record>
                 </Annotation>
             </Annotations>
+
+            <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType/mrcText">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="documentSet"/>
+                        <PropertyValue Property="PresentationVariantQualifier" String="filterStatusByCount"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="mrcText"/>
+                                    <PropertyValue Property="ValueListProperty" String="mrcText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
             <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType">
+            
                 <Annotation Term="UI.Chart" Qualifier="totalByMonth">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="Title" String="Total por mes"/>
@@ -42,11 +61,12 @@
                         </PropertyValue>
                         <PropertyValue Property="Measures">
                             <Collection>
-                                <PropertyPath>TotalAmount</PropertyPath>
+                                <PropertyPath>statusCount</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+
                 <Annotation Term="UI.PresentationVariant" Qualifier="presentTotalByMonth">
                     <Record Type="UI.PresentationVariantType">
                         <PropertyValue Property="SortOrder">
@@ -64,7 +84,37 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+
+                <Annotation Term="UI.Chart" Qualifier="statusCountFilter">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Cantidad por Estado"/>
+                        <PropertyValue Property="Description" String="Cantidad de facturas por estado"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>mrcText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.PresentationVariant" Qualifier="filterStatusByCount">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#statusCountFilter</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
+
+
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

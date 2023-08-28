@@ -54,6 +54,8 @@
                 <Property Name="unameWf" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label=""/>
                 <Property Name="mrcStatus" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label=""/>
                 <Property Name="mrcText" Type="Edm.String" MaxLength="64" sap:aggregation-role="dimension" sap:label=""/>
+                <Property Name="statusCount" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="" sap:filterable="false"/>
+                <Property Name="Criticality" Type="Edm.Byte" sap:aggregation-role="dimension"/>
             </EntityType>
             <EntityContainer Name="xEM4VxI_SVC_ALP_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="documentSet" EntityType="xEM4VxI_SVC_ALP_CDS.documentSetType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
@@ -80,6 +82,7 @@
                             <Collection>
                                 <PropertyPath>ID</PropertyPath>
                                 <PropertyPath>TotalAmount</PropertyPath>
+                                <PropertyPath>statusCount</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>

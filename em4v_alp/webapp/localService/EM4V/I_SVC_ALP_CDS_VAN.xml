@@ -32,6 +32,7 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType/TotalAmount"/>
+            <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType/statusCount"/>
             <Annotations Target="xEM4VxI_SVC_ALP_CDS.documentSetType">
                 <Annotation Term="UI.Chart" Qualifier="chartDefault">
                     <Record Type="UI.ChartDefinitionType">
@@ -64,6 +65,12 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String=""/>
+                        <PropertyValue Property="TypeNamePlural" String=""/>
+                    </Record>
+                </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
@@ -85,6 +92,7 @@
                             <PropertyValue Property="Value" Path="senderName"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="Criticality"/>
                             <PropertyValue Property="Value" Path="mrcText"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -113,6 +121,7 @@
                         <PropertyPath>mrcStatus</PropertyPath>
                         <PropertyPath>CurrencyType</PropertyPath>
                         <PropertyPath>IssueMonth</PropertyPath>
+                        <PropertyPath>mrcText</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
